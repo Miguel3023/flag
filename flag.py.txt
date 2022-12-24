@@ -18,7 +18,7 @@ signal.signal(signal.SIGINT, code_exiting)
 
 #Variables Goblales
 
-main_url = "http://167.172.55.94:31423/login"
+main_url = "http://<ip>/login"
 
 characters = string.ascii_letters + string.digits + "_{}()"
 
